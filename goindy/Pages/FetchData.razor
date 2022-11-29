@@ -1,0 +1,145 @@
+﻿@page "/Форум.html"
+
+<div class="container-fluid">
+    <main class="tm-main">
+        <h2 class="tm-color-primary tm-post-title mb-4">Ваш вопрос</h2>
+        <div class="mb-4">
+            <input class="form-control" name="name" type="text">
+        </div>
+        <div class="text-right">
+            <button class="tm-btn tm-btn-primary tm-btn-small">Ask</button>
+        </div>
+        <!-- Search form -->
+        @foreach (var answer in answers)
+        {
+            <div class="row tm-row">
+                <div class="col-lg-8 tm-post-col">
+                    <div class="tm-post-full">
+                        <div class="mb-4">
+                            <h2 class="pt-2 tm-color-primary tm-post-title">@answer.Name</h2>
+                            <p class="tm-mb-40">@answer.Info</p>
+                            <p>@answer.Description</p>
+                            <span class="d-block text-right tm-color-primary"> @answer.Tags </span>
+                        </div>
+                        @foreach (var comment in answer.Comments)
+                        {
+                            <!-- Comments -->
+                            <div>
+                                <h2 class="tm-color-primary tm-post-title">Comments</h2>
+                                <hr class="tm-hr-primary tm-mb-45">
+                                <div class="tm-comment tm-mb-45">
+                                    <figure class="tm-comment-figure">
+                                        <img src="@comment.Avatar" alt="Image" class="mb-2 rounded-circle img-thumbnail">
+                                        <figcaption class="tm-color-primary text-center">@comment.Nickname</figcaption>
+                                    </figure>
+                                    <div>
+                                        <p>
+                                            @comment.Text
+                                        </p>
+                                        <div class="d-flex justify-content-between">
+                                            <span class="tm-color-primary">@comment.Date</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        }
+                              <h2 class="tm-color-primary tm-post-title mb-4">Ваш комментарий</h2>
+                            <div class="mb-4">
+                                <input class="form-control" name="name" type="text">
+                            </div>
+                                <div class="text-right">
+                                    <button class="tm-btn tm-btn-primary tm-btn-small">Ask</button>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row tm-row">
+
+            <aside class="col-lg-4 tm-aside-col">
+                <div class="tm-post-sidebar">
+                    <hr class="mb-3 tm-hr-primary">
+                    <h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
+                    <ul class="tm-mb-75 pl-5 tm-category-list">
+                        <li><a href="#" class="tm-color-primary">Visual Designs</a></li>
+                        <li><a href="#" class="tm-color-primary">Travel Events</a></li>
+                        <li><a href="#" class="tm-color-primary">Web Development</a></li>
+                        <li><a href="#" class="tm-color-primary">Video and Audio</a></li>
+                        <li><a href="#" class="tm-color-primary">Etiam auctor ac arcu</a></li>
+                        <li><a href="#" class="tm-color-primary">Sed im justo diam</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+        <footer class="row tm-row">
+            <div class="col-md-6 col-12 tm-color-gray">
+                Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
+            </div>
+            <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                Copyright 2022 GoIndy Co. Ltd.
+            </div>
+        </footer>
+    </main>
+</div>
+
+@code {
+    class Comment
+    {
+        public string Avatar { get; set; }
+        public string Nickname { get; set; }
+        public string Text { get; set; }
+        public DateTime Date { get; set; }
+    }
+    class Answer
+    {
+        public string Name { get; set; }
+        public string Info { get; set; }
+        public string Description { get; set; }
+        public string Tags { get; set; }
+
+        public Comment[] Comments { get; set; }
+    }
+
+    Answer[] answers = new Answer[]{
+        new Answer{
+            Name="Single Post of Xtra Blog HTML Template",
+            Info="June 16, 2020 posted by Admin Nat",
+            Description="This is a description of the video post. You can also have an image instead of the video. You can free download Xtra Blog Template from TemplateMo website. Phasellus maximus quis est sit amet maximus. Vestibulum vel rutrum lorem, ac sodales augue. Aliquam erat volutpat. Duis lectus orci, blandit in arcu est, elementum tincidunt lectus. Praesent vel justo tempor, varius lacus a, pharetra lacus.Duis pretium efficitur nunc. Mauris vehicula nibh nisi. Curabitur gravida neque dignissim, aliquet nulla sed, condimentum nulla. Pellentesque id venenatis quam, id cursus velit. Fusce semper tortor ac metus iaculis varius. Praesent aliquam ex vel lectus ornare tristique. Nunc et eros quis enim feugiat tincidunt et vitae dui.",
+            Tags="Creative . Design . Business",
+            Comments= new Comment[] {
+                new Comment{
+                    Avatar="img/comment-1.jpg",
+                    Nickname="Mark Sonny",
+                    Text="Praesent aliquam ex vel lectus ornare tritique. Nunc et eros quis enim feugiat tincidunt et vitae dui. Nullam consectetur justo ac ex laoreet rhoncus. Nunc id leo pretium, faucibus sapien vel, euismod turpis.",
+                    Date=new DateTime(22,07,24)
+                },
+                new Comment{
+                    Avatar="img/comment-2.jpg",
+                    Nickname="Jewel Soft",
+                    Text="Nunc et eros quis enim feugiat tincidunt et vitae dui. Nullam consectetur justo ac ex laoreet rhoncus. Nunc id leo pretium, faucibus sapien vel, euismod turpis.",
+                    Date=new DateTime(22,07,28)
+                },
+            }
+        },
+        new Answer{
+            Name="Single Post of Xtra Blog HTML Template",
+            Info="June 16, 2020 posted by Admin Nat",
+            Description="This is a description of the video post. You can also have an image instead of the video. You can free download Xtra Blog Template from TemplateMo website. Phasellus maximus quis est sit amet maximus. Vestibulum vel rutrum lorem, ac sodales augue. Aliquam erat volutpat. Duis lectus orci, blandit in arcu est, elementum tincidunt lectus. Praesent vel justo tempor, varius lacus a, pharetra lacus.Duis pretium efficitur nunc. Mauris vehicula nibh nisi. Curabitur gravida neque dignissim, aliquet nulla sed, condimentum nulla. Pellentesque id venenatis quam, id cursus velit. Fusce semper tortor ac metus iaculis varius. Praesent aliquam ex vel lectus ornare tristique. Nunc et eros quis enim feugiat tincidunt et vitae dui.",
+            Tags="Creative . Design . Business",
+            Comments= new Comment[] {
+                new Comment{
+                    Avatar="img/comment-1.jpg",
+                    Nickname="Mark Sonny",
+                    Text="Praesent aliquam ex vel lectus ornare tritique. Nunc et eros quis enim feugiat tincidunt et vitae dui. Nullam consectetur justo ac ex laoreet rhoncus. Nunc id leo pretium, faucibus sapien vel, euismod turpis.",
+                    Date=new DateTime(22,07,29)
+                },
+                 new Comment{
+                    Avatar="img/comment-2.jpg",
+                    Nickname="Jewel Soft",
+                    Text="Nunc et eros quis enim feugiat tincidunt et vitae dui. Nullam consectetur justo ac ex laoreet rhoncus. Nunc id leo pretium, faucibus sapien vel, euismod turpis.",
+                    Date=new DateTime(22,08,08)
+                },
+            }
+        },
+    };
+}

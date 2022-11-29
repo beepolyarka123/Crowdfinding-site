@@ -1,0 +1,97 @@
+﻿@*<MudNavMenu>
+    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+    <MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
+    <MudNavLink Href="fetchdata" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Fetch data</MudNavLink>
+</MudNavMenu>
+*@
+
+<style>
+    .tm-social-link {
+        display: inline-block;
+        background-color: white;
+        font-size: 1.4rem;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        padding-top: 8px;
+        margin-right: 15px;
+        margin-bottom: 15px;
+        border: 2px;
+        border-color: aqua;
+    }
+
+    .tm-social-icon {
+        color: #6600e8;
+        transition: all 0.3s ease;
+    }
+
+    .tm-social-link:hover .tm-social-icon.fa-Telegram {
+        color: #6800ff;
+    }
+
+    .tm-social-link:hover .tm-social-icon.fa-twitter {
+        color: #00acee;
+    }
+
+    .tm-social-link:hover .tm-social-icon.fa-instagram {
+        color: #3f729b;
+    }
+
+    .tm-social-link:hover .tm-social-icon.fa-GitHub {
+        color: #0e76a8;
+    }
+</style>
+
+<header class="tm-header" id="tm-header">
+    <div class="tm-header-wrapper">
+        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="tm-site-header">
+            <div class="mb-3 mx-auto tm-site-logo">GoIndy<i class="fas fa-times fa-2x"></i></div>
+        </div>
+        <nav class="tm-nav" id="tm-nav">
+            <ul>
+                <li class="tm-nav-item">
+                    <a href="/" class="tm-nav-link">
+                        <i class="fas fa-home"></i>
+                        Основная страница
+                    </a>
+                </li>
+                <li class="tm-nav-item">
+                    <a href="Форум.html" class="tm-nav-link">
+                        <i class="fas fa-pen"></i>
+                        Форум
+                    </a>
+                </li>
+                <li class="tm-nav-item">
+                    <a href="counter" class="tm-nav-link">
+                        <i class="fas fa-users"></i>
+                        Профиль пользователя
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="tm-mb-65">
+            <a rel="nofollow" href="https://telegram.org/" class="tm-social-link">
+                <i class="fab fa-Telegram tm-social-icon"></i>
+                <MudIcon Icon="@Icons.Custom.Brands.Telegram" Title="Telegram" />
+            </a>
+            <a href="https://twitter.com" class="tm-social-link">
+                <i class="fab fa-twitter tm-social-icon"></i>
+                <MudIcon Icon="@Icons.Custom.Brands.Twitter" Title="Twitter" />
+            </a>
+            <a href="https://instagram.com" class="tm-social-link">
+                <i class="fab fa-instagram tm-social-icon"></i>
+                <MudIcon Icon="@Icons.Custom.Brands.Instagram" Title="Instagram" />
+            </a>
+            <a href="https://github.com/" class="tm-social-link">
+                <i class="fab fa-GitHub tm-social-icon"></i>
+                <MudIcon Icon="@Icons.Custom.Brands.GitHub" Title="GitHub" />
+            </a>
+        </div>
+        <p class="tm-mb-80 pr-5 text-white">
+            Наша главная задача: помочь российскому геймдеву в трудные времена.
+        </p>
+    </div>
+</header>

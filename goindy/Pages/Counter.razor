@@ -1,0 +1,131 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<style>
+    .doometernal {
+        font-family: 'Times New Roman';
+        color: #00acee;
+    }
+
+    .GRIS {
+        font-size: 30px;
+        margin-top:;
+        color: aqua;
+    }
+</style>
+
+@*<MudSlider @bind-Value="spacing" Min="0" Max="10" Color="Color.Info" Class="mb-6">Spacing: @spacing.ToString()</MudSlider>*@
+@foreach (var profile in profile)
+{
+    <MudGrid Spacing="@spacing" Justify="Justify.Center">
+        <MudItem>
+            <img src="@profile.Avatar" alt="Image" class="img-fluid" width="240px" height="160px">
+        </MudItem>
+    </MudGrid>
+
+    <p class="kallofduty">@profile.Nickname</p>
+
+    <MudPaper Class="pa-4 haven" Elevation="0">
+        <MudText Typo="Typo.h6" GutterBottom="true">Где вы?</MudText>
+        <MudSelect T="string" Label="В сети или не в сети" Dense="true">
+            @*Value="@SelectedTestComponent" ValueChanged="OnSelectedTestComponent"*@
+            <MudSelectItem T="string" Value="@("MudIcon")">В сети</MudSelectItem>
+            <MudSelectItem T="string" Value="@("MudButton")">Не в сети</MudSelectItem>
+        </MudSelect>
+    </MudPaper>
+
+    <MudGrid>
+        <MudItem>
+            <p class="doometernal">Обо мне: @profile.About</p>
+        </MudItem>
+    </MudGrid>
+    <p class="GRIS">Проекты:</p>
+    <MudGrid Spacing="@spacing" Justify="Justify.SpaceAround">
+
+        @foreach (var projects in profile.projects)
+        {
+            <MudItem>
+                <article class="col-12 col-md-6 tm-post">
+                    <hr class="tm-hr-primary">
+                    <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
+                        <div class="tm-post-link-inner">
+                            <img src="@projects.imagePath" alt="Image" class="img-fluid">
+                        </div>
+                        <span class="position-absolute tm-new-badge">New</span>
+                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">@projects.GameName</h2>
+                    </a>
+                    <p class="tm-pt-30">
+                        @projects.Description
+                    </p>
+                    <div class="d-flex justify-content-between tm-pt-45">
+                        <span class="tm-color-primary">@projects.Tags</span>
+                        <span class="tm-color-primary">@projects.Date</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <span>@projects.Comments</span>
+                        <span>@projects.Author</span>
+                    </div>
+                </article>
+            </MudItem>
+
+        }
+    </MudGrid>
+
+
+
+    @code {
+    public int spacing { get; set; } = 2;
+    class Project
+    {
+        public string imagePath { get; set; }
+        public string GameName { get; set; }
+        public string Description { get; set; }
+        public string Tags { get; set; }
+        public string Date { get; set; }
+        public string Author { get; set; }
+        public string Comments { get; set; }
+    }
+    class Profile
+    {
+        public string Avatar { get; set; }
+        public string Nickname { get; set; }
+        public string About { get; set; }
+        public Project[] projects { get; set; }
+    }
+
+    Profile[] profile = new Profile[]
+        {
+            new Profile{
+                Avatar="img/fppcHM7A1zE.png",
+                Nickname="beepolyarka",
+                About="Gsdfghnvlserhmcf, gshgrvdhsjkhlsk, adrhfgcjlk shrglhsukfhnc, s uhgjhwsdkrghskle huihgsiughsdhgs jdfbgsdhgsdihh i ghdfihgiudhgi hgsh gshgidhgdhgkdh gdhg.",
+                projects= new Project[]{
+
+                        new Project{
+                            imagePath="img/Hollow-Knight_2.jpg",
+                            GameName="Hollow Knight",
+                            Description="Brave the Depths of a Forgotten Kingdom Beneath the fading town of Dirtmouth sleeps a vast, ancient kingdom. Many are drawn beneath the surface, searching for riches, or glory, or answers to old secrets. As the enigmatic Knight, you’ll traverse the depths, unravel its mysteries and conquer its evils.",
+                            Tags="Metroidvania , Souls-like",
+                            Date="24.02.2017",
+                            Author="by Team Cherry",
+                            Comments="36547 comments"
+                            },
+
+                        new Project{
+                            imagePath="img/img-02.jpg",
+                            GameName="Multi-purpose blog template",
+                            Description="Xtra Blog is a multi-purpose HTML CSS template from TemplateMo website. Blog list, single post, about, contact pages are included. Left sidebar fixed width and content area is a fluid full-width.",
+                            Tags="Creative , Design , Business",
+                            Date="16.07.2020",
+                            Author="by Admin Sam",
+                            Comments="48 comments",
+                        }
+                    }
+                }
+            };
+}
+    ;
+}
+
